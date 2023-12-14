@@ -1,0 +1,32 @@
+//Lab D6 ques_no. 2
+
+/*
+2. Write a program to reverse a given List of strings.
+
+Expected Output:
+
+Original List : [ Apple, Banana, Cherry, Mango ]
+
+Reverse List : [ Mango, Cherry, Banana, Apple ]
+*/
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ReverseList {
+	public static void main(String args[]) {
+	List<String> originalList = new ArrayList<>();
+	originalList.add("Apple");
+	originalList.add("Banana");
+	originalList.add("Cherry");
+	originalList.add("Mango");
+
+	System.out.println("Original List : " +originalList);
+
+	/*for reverse */  Collections.reverse(originalList);
+
+	System.out.println("Reverse List : " + originalList);
+
+	}
+}
