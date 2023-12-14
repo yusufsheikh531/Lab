@@ -1,0 +1,46 @@
+//Lab D4 ques_no. 2
+
+/*
+2.	Write a Java program that demonstrates method overriding by creating a superclass called Animal and two subclasses called Dog and Cat.
+	* The Animal class should have a method called makeSound(), which simply prints "The animal makes a sound."
+	* The Dog and Cat classes should override this method to print "TheCat/The dog meows/barks" respectively.
+	* The program should allow the user to create and display objects of each class.						[Hint:Use multilevel inheritance]
+*/
+
+class Animal {
+	public void makeSound() {
+	System.out.println("\tThe animal makes a sound. ");
+	}
+}
+
+class Dog extends Animal{
+	@Override
+		public void makeSound(){
+		System.out.println("\t The dog barks. ");
+		}
+}
+
+class Cat extends Animal{
+	@Override 
+		public void makeSound() {
+		System.out.println("\t The cat meows.");
+		}
+}
+
+public class AnimalSound {
+	public static void main(String[] args){
+	Animal animal = new Animal();		//creating obj for each class
+	Dog dog = new Dog();
+	Cat cat = new Cat();
+	
+	System.out.print("\tAnimal sound :");
+	animal.makeSound();
+
+	System.out.print("\t Dog sound :");
+	dog.makeSound();
+
+	System.out.print("\t Cat sound : ");
+	cat.makeSound();
+
+	}
+}
