@@ -9,7 +9,7 @@ after withdraw. Later on, deposit 5000 in the account balance.At the end display
 "Withdrawal successful" : "Insufficient balance"; 
 */
 
-public class Bank {
+public class Lab2 {
     private double amount;
 
     // Parameterized constructor to initialize the amount
