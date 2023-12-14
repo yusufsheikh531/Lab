@@ -46,7 +46,7 @@ class User  {
 		}
 	}
 
-		public class LabD3Q3Main {
+		public class Lab3Q3Main {
 			public static void main(String[] args) {
 				Employee employee = new Employee(1, " John ", 20000);
 
