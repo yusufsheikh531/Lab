@@ -9,7 +9,7 @@ Sample Input 1: 145
 
 import java.util.Scanner;
 
-public class StrongNumber 
+public class Lab3Q1 
 {
 
 	static int factorial(int num) {   //method: cal factorialof num
