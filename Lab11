@@ -1,0 +1,36 @@
+
+CREATE DATABASE Lab;
+USE Lab;
+
+CREATE TABLE Client_Master (
+ClientNo VARCHAR(6) PRIMARY KEY,
+Name VARCHAR(20) NOT NULL,
+Address1 VARCHAR(30) NOT NULL,
+Address2 VARCHAR(30) NOT NULL,
+City VARCHAR(15) NOT NULL,
+Pincode INT NOT NULL,
+State VARCHAR(15) NOT NULL,
+BalDue INT NOT NULL
+);
+
+INSERT INTO Client_Master (ClientNo, Name, Address1, Address2, City, Pincode, State, BalDue) -- putting value
+VALUES
+('CL001', 'Rahul Gupta', '25 Gandhi Marg', 'Apartment 302', 'Nahan', 400001, 'HP', 1200),
+('CL002', 'Priya Sharma', '15 Rajput Nagar', 'Flat 501', 'Delhi', 110085, 'DL', 900),
+('CL003', 'Amit Patel', '8 Bapuji Street', 'House 102', 'Solan', 380001, 'HP', 600),
+('CL004', 'Sunita Verma', '42 Charminar Road', 'Block C', 'Hyderabad', 500002, 'TG', 1500);
+
+
+-- ---------------------------------------------------------------------------------------------------------
+
+-- a. Find out the names of all clients.
+SELECT Name FROM Client_Master;
+
+-- b. Retrieve the entire contents of the client_master table;
+SELECT * FROM Client_Master;
+
+-- c. Retrieve the list of names, city and the state of all the clients.
+SELECT Name, City , State FROM Client_Master;
+
+-- d. Destroy the table client_master along with its data
+DROP TABLE Client_Master;
