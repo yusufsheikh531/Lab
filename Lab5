@@ -1,0 +1,188 @@
+//Lab D5 ques_
+
+/*Q. Develop a simple java application to calculate the tax for a particular employee based on his salary with below details
+
+	- Develop a class named "TaxCalculator" with a method named calculateTax, this method should return a double taxAmount.
+
+
+		Variable Name    Data Type
+
+		empName             String
+
+		isIndian            boolean
+
+		empSal              double
+
+
+
+The business logic for calculating the tax is as follows, this has to be implemented inside the method,
+
+	- If the employee is not a Indian
+
+		- The calculator should throw a "CountryNotValidException".
+
+	- If the employee name is null or empty
+
+		- The calculator should throw a "EmployeeNameInvalidException".
+
+	- If empSal is greater than one lakh and isIndian true
+
+		- taxAmount =empSal *8/100
+
+	- Otherwise If empSal is between 50K and 1lakh and isIndian true
+
+		- taxAmount =empSal *6/100
+
+	- Otherwise If empSal is between 30 and 50 Thousand and isIndian true
+
+		- taxAmount =empSal *5/100
+
+	- Otherwise If empSal is between 10 and 30 Thousand and isIndian true
+
+		- taxAmount =empSal *4/100
+
+	- Otherwise
+
+		- The calculator should throw a TaxNotEligibleException.
+
+
+
+Develop a main class CalculatorSimulator, implement the following logic in main method
+
+	- 1. Execute the calculateTax Method and print the tax amount as "Tax amount is : "<<Tax Amount>>"
+
+	- 2. In case the calculateTaxMethod throws exceptions, this method needs to catch the appropriate exception print the stack trace and display the following messages,
+
+		a. Country not valid: "The employee should be an Indian citizen for calculating tax"
+
+		b. Employee name not valid: "The employee name cannot be empty"
+
+		c. Not eligible for Tax calculation: "The employee does not need to pay tax"
+
+
+
+The following test cases to be executed, change the data in main method and run it and verify the
+
+
+
+Output messages
+
+
+
+
+Test Cases 	Name	   Salary 	Is Indian 		Message Expected
+
+-----------------------------------------------------------------------------------
+
+Test Case 1 	 Ron 	    34000 		False 		The employee should be an Indian citizen for calculating tax.
+
+Test Case 2 	 Tim 	     1000 		        True 		The employee does not need to pay tax
+
+Test Case 3 	 Jack 	     55000 		True 		Tax amount is 3300
+
+Test Case 4 	 <empty>    30000 		True 		The employee name cannot be empty
+
+*/
+
+
+class CountryNotValidException extends Exception {
+    public CountryNotValidException() {
+        super("The employee should be an Indian citizen for calculating tax");
+    }
+}
+
+class EmployeeNameInvalidException extends Exception {
+    public EmployeeNameInvalidException() {
+        super("The employee name cannot be empty");
+    }
+}
+
+class TaxNotEligibleException extends Exception {
+    public TaxNotEligibleException() {
+        super("The employee does not need to pay tax");
+    }
+}
+
+class TaxCalculator {
+    public double calculateTax(String empName, boolean isIndian, double empSal)
+            throws CountryNotValidException, EmployeeNameInvalidException, TaxNotEligibleException {
+        if (!isIndian) {
+            throw new CountryNotValidException();
+        }
+        if (empName == null || empName.isEmpty()) {
+            throw new EmployeeNameInvalidException();
+        }
+        double taxAmount = 0.0;
+        if (empSal > 100000) {
+            taxAmount = empSal * 8 / 100;
+        } else if (empSal >= 50000) {
+            taxAmount = empSal * 6 / 100;
+        } else if (empSal >= 30000) {
+            taxAmount = empSal * 5 / 100;
+        } else if (empSal >= 10000) {
+            taxAmount = empSal * 4 / 100;
+        } else {
+            throw new TaxNotEligibleException();
+        }
+        return taxAmount;
+    }
+}
+
+public class CalculatorSimulator {
+    public static void main(String[] args) {
+        TaxCalculator taxCalculator = new TaxCalculator();
+
+		System.out.println("Test Cases\tName\tSalary\tIs Indian\tMessage Expected");
+        System.out.println("----------------------------------------------------------");
+
+       
+
+        // Test Case 1
+        try {
+            double taxAmount = taxCalculator.calculateTax("Ron", false, 34000);
+            System.out.println("Test Case 1\t Ron \t 34000 \t False \t The employee should be an Indian citizen for calculating tax.");
+        } catch (CountryNotValidException e) {
+            System.out.println("Test Case 1\t Ron \t 34000 \t False \t " + e.getMessage());
+        } catch (EmployeeNameInvalidException e) {
+            System.out.println("Test Case 1\t Ron \t 34000 \t False \t " + e.getMessage());
+        } catch (TaxNotEligibleException e) {
+            System.out.println("Test Case 1\t Ron \t 34000 \t False \t " + e.getMessage());
+        }
+
+        // Test Case 2
+        try {
+            double taxAmount = taxCalculator.calculateTax("Tim", true, 1000);
+            System.out.println("Test Case 2\t Tim \t 1000 \t True \t The employee does not need to pay tax");
+        } catch (CountryNotValidException e) {
+            System.out.println("Test Case 2\t Tim \t 1000 \t True \t " + e.getMessage());
+        } catch (EmployeeNameInvalidException e) {
+            System.out.println("Test Case 2\t Tim \t 1000 \t True \t " + e.getMessage());
+        } catch (TaxNotEligibleException e) {
+            System.out.println("Test Case 2\t Tim \t 1000 \t True \t " + e.getMessage());
+        }
+
+        // Test Case 3
+        try {
+            double taxAmount = taxCalculator.calculateTax("Jack", true, 55000);
+            System.out.println("Test Case 3\t Jack \t 55000 \t True \t Tax amount is " + taxAmount);
+        } catch (CountryNotValidException e) {
+            System.out.println("Test Case 3\t Jack \t 55000 \t True \t " + e.getMessage());
+        } catch (EmployeeNameInvalidException e) {
+            System.out.println("Test Case 3\t Jack \t 55000 \t True \t " + e.getMessage());
+        } catch (TaxNotEligibleException e) {
+            System.out.println("Test Case 3\t Jack \t 55000 \t True \t " + e.getMessage());
+        }
+
+        // Test Case 4
+        try {
+            double taxAmount = taxCalculator.calculateTax("", true, 30000);
+            System.out.println("Test Case 4 <empty> \t 30000 \t True \t The employee name cannot be empty");
+        } catch (CountryNotValidException e) {
+            System.out.println("Test Case 4 <empty> \t 30000 \t True \t " + e.getMessage());
+        } catch (EmployeeNameInvalidException e) {
+            System.out.println("Test Case 4 <empty> \t 30000 \t True \t " + e.getMessage());
+        } catch (TaxNotEligibleException e) {
+            System.out.println("Test Case 4 <empty> \t 30000 \t True \t " + e.getMessage());
+        }
+    }
+}
