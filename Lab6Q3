@@ -1,0 +1,36 @@
+//Lab D6 ques_no. 3
+
+/*
+3. Write a Java program that calculates the sum of all even numbers present in an ArrayList of integers.
+
+Sample Input : [2, 5, 8, 10, 15]
+
+Expected Output: Sum of even numbers : 20
+*/
+
+
+import java.util.ArrayList;
+
+public class SumOfEvenNumbers {
+    public static void main(String[] args) {
+        // Create an ArrayList of integers
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(2);
+        numbers.add(5);
+        numbers.add(8);
+        numbers.add(10);
+        numbers.add(15);
+
+        int sumOfEvenNumbers = 0;
+
+        // Iterate through the list and sum up even numbers
+        for (int number : numbers) {
+            if (number % 2 == 0) {
+                sumOfEvenNumbers += number;
+            }
+        }
+
+        System.out.println("Sample Input: " + numbers);
+        System.out.println("Sum of even numbers: " + sumOfEvenNumbers);
+    }
+}
