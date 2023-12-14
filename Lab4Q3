@@ -1,0 +1,109 @@
+// Lab  D4 ques_no. 3
+
+/*
+3.	Create abstract class vaccine.Create two variables age(int),nationality(String).create 2 concrete methods firstDose() and secondDose().
+	Scenario 1:user can take the first dose if the user is Indian and age is 18.After vaccination the user has to pay 250rs(which will be displayed on the console). 
+	Scenario 2: Users are eligible to take the second dose only after completing the first dose. 
+	Scenario 3: create abstract method boosterDose() in abstract class Vaccine.Create one implementation class vaccinationSuccessful, where implement boosterDose() method.
+	Create main class vaccination and invoke all methods accordingly.
+	[Hint:Create constructor to initialize variables age and nationality,Use flow control(If-else) to check condition] 
+	Sample Input Nationality: Indian Age: 18
+*/
+
+
+
+import java.util.Scanner;
+
+abstract class Vaccine {
+    int age;
+    String nationality;
+    boolean isFirstDoseCompleted = false;
+    boolean isSecondDoseCompleted = false;
+
+    public Vaccine(int age, String nationality) { //constructor
+        this.age = age;
+        this.nationality = nationality;
+    }
+
+    public void firstDose() {   //methd : for first dose
+        if (!isFirstDoseCompleted) {
+            if (nationality.equalsIgnoreCase("Indian") && age >= 18) {
+                System.out.println("First dose administered successfully.");
+                System.out.println("Payment: Rs. 250");
+                isFirstDoseCompleted = true;
+            } else {
+                System.out.println("You are not eligible for the first dose.");
+            }
+        } else {
+            System.out.println("You have already completed the first dose.");
+        }
+    }
+
+    public void secondDose() { //methd: second dose
+        if (isFirstDoseCompleted && !isSecondDoseCompleted) {
+            System.out.println("You are eligible to take the second dose.");
+            isSecondDoseCompleted = true;
+        } else if (isSecondDoseCompleted) {
+            System.out.println("You have already completed the second dose.");
+        } else {
+            System.out.println("You must complete the first dose before taking the second dose.");
+        }
+    }
+
+	
+
+    public void boosterDose() {
+        if (isFirstDoseCompleted && isSecondDoseCompleted) {
+			
+			System.out.println();
+
+            System.out.print("Do you want to administer the booster dose, if taken second dose [Y/N]: ");
+            Scanner scanner = new Scanner(System.in);
+            String response = scanner.nextLine();
+            if (response.equalsIgnoreCase("Y")) {
+                System.out.println("Booster dose administered successfully.");
+            } else if (response.equalsIgnoreCase("N")) {
+                System.out.println("Booster dose cancelled.");
+            } else {
+                System.out.println("Invalid response. Booster dose not administered.");
+            }
+        } else {
+			System.out.println();
+            System.out.println("You are not eligible for the booster dose yet.");
+        }
+    }
+}
+
+class VaccinationSuccessful extends Vaccine {
+    public VaccinationSuccessful(int age, String nationality) {
+        super(age, nationality);
+    }
+}
+
+public class Vaccination {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter your age: ");
+        int age = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+
+        System.out.print("Enter your nationality: ");
+        String nationality = scanner.nextLine();
+
+        
+        Vaccine user = new VaccinationSuccessful(age, nationality);  // Create an instance of the concrete subclass
+
+        user.firstDose();
+        user.secondDose();
+        user.boosterDose();
+
+			System.out.println();
+			System.out.println("Stay Healthy :) ");
+
+        scanner.close();
+    }
+
+	
+}
+
