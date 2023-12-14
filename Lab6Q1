@@ -1,0 +1,51 @@
+//Lab D6 ques_no. 1
+
+/*
+1. Create a Book class with bookId, bookName and authorName.Create parameterized constructor to initialize the object. Create an ArrayList of type Book and store all book objects into collections and display all book details.
+
+[Hint: Use advanced for loop to display all Books details]
+
+Expected Output:
+
+-- All Books --
+
+Book [Book Id = 101, Book Name = Let Us C, Author Name = Yashvant P Kanitkar]
+
+Book [Book Id = 102, Book Name = Head First Java, Author Name = Kathy Sierra]
+*/
+
+import java.util.ArrayList;
+
+class Book {
+    private int bookId;
+    private String bookName;
+    private String authorName;
+
+    public Book(int bookId, String bookName, String authorName) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.authorName = authorName;
+    }
+
+    @Override
+    public String toString() {
+        return "Book [Book Id = " + bookId + ", Book Name = " + bookName + ", Author Name = " + authorName + "]";
+    }
+}
+
+public class BooksDetail {
+    public static void main(String[] args) {
+        // Create an ArrayList of type Book
+        ArrayList<Book> books = new ArrayList<>();
+
+        // Add book objects to the ArrayList
+        books.add(new Book(101, "Let Us C", "Yashvant P Kanitkar"));
+        books.add(new Book(102, "Head First Java", "Kathy Sierra"));
+
+        // Display all book details using an enhanced for loop
+        System.out.println("-- All Books --");
+        for (Book book : books) {
+            System.out.println(book);
+        }
+    }
+}
