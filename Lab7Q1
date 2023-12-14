@@ -1,0 +1,23 @@
+import java.util.HashSet;
+
+public class HashSetAppendExample {
+    public static void main(String[] args) {
+        // Create a HashSet
+        HashSet<String> fruitSet = new HashSet<>();
+
+        // Add elements to the HashSet
+        fruitSet.add("banana");
+        fruitSet.add("date");
+        fruitSet.add("apple");
+
+        // Display the original HashSet
+        System.out.println("Original HashSet: " + fruitSet);
+
+        // Append the specified element to the end of the HashSet
+        String newFruit = "cherry";
+        fruitSet.add(newFruit);
+
+        // Display the updated HashSet
+        System.out.println("Updated HashSet: " + fruitSet);
+    }
+}
