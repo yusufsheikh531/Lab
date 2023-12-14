@@ -1,0 +1,83 @@
+//Lab D4 ques_no. 1
+
+/*
+1.  Create one superclass HillStations and three subclasses Manali, Mussoorie, Gulmarg. Subclasses extend the superclass and override its location() and famousFor()
+	method.
+	i.) call the location() and famousFor() method by the Parent class', i.e. Hillstations class. As it refers to the base class object and the base class method 
+		overrides the superclass method; the base class method is invoked at runtime. 
+	ii.) call the location() and famousFor() method by the all subclass',and print accordingly.
+*/
+
+class HillStations {
+	public void location(){
+	System.out.println("Hill Station - General Location ");
+	}
+
+	public void famousFor() {
+	System.out.println("Hill Station - General Attractions");
+	}
+}
+
+class Manali extends HillStations {
+	@Override
+		public void location() {
+		System.out.println("\t Manali - Located in Himachal Pradesh. ");
+		}
+
+	@Override
+		public void famousFor() {
+		System.out.println("\t Manali - Famous for scenic beauty and adventure sport. ");
+		}
+}
+
+class Mussoorie extends HillStations {
+	@Override
+		public void location() {
+		System.out.println("\t Mussoorie - Located i Uttarakhand. ");
+		}
+	
+	@Override
+		public void famousFor() {
+		System.out.println("\t Mussoorie - Famous for its pleasant climate and Kempty Falls. ");
+		}
+}
+
+class Gulmarg extends HillStations {
+	@Override
+		public void location(){
+		System.out.println("\t Gumarg - Located in Jammu & Kashmir. ");
+		}
+
+	@Override
+		public void famousFor() {
+		System.out.println("\t Gulmarg - Famous for skiing an scenic landscapes. ");
+		}
+}
+
+public class HillStationsMain {
+	public  static void main(String[] args) {
+	
+	HillStations hillStation = new HillStations();		//Part I
+	System.out.println("Calling methods using parent class : ");
+	hillStation.location();
+	hillStation.famousFor();
+
+	System.out.println();
+	
+	Manali manali = new Manali();
+	Mussoorie mussoorie = new Mussoorie();
+	Gulmarg gulmarg = new Gulmarg();
+
+	System.out.println("Calling methods using the subclasses : ");
+	manali.location();
+	manali.famousFor();
+
+	mussoorie.location();
+	mussoorie.famousFor();
+
+	gulmarg.location();
+	gulmarg.famousFor();
+	}
+
+}
+
