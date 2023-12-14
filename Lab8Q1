@@ -1,0 +1,16 @@
+import java.util.HashMap;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        // Create a HashMap
+        HashMap<String, Integer> hashMap = new HashMap<>();
+
+        // Associate values with keys
+        hashMap.put("One", 1);
+        hashMap.put("Two", 2);
+        hashMap.put("Three", 3);
+
+        // Display the HashMap
+        System.out.println("HashMap : " + hashMap);
+    }
+}
